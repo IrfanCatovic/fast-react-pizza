@@ -1,7 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
-import { Form } from "react-router-dom";
+import { Form, redirect, useNavigate, useNavigation } from "react-router-dom";
+import { createOrder } from "../../services/apiRestaurant";
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
@@ -34,8 +35,10 @@ const fakeCart = [
 ];
 
 function CreateOrder() {
+  const navigation = useNavigation();
   // const [withPriority, setWithPriority] = useState(false);
   const cart = fakeCart;
+  const isSubmitting = navigation.state === "submitting";
 
   return (
     <div>
@@ -74,7 +77,10 @@ function CreateOrder() {
         </div>
 
         <div>
-          <button>Order now</button>
+          <input type="hidden" name="cart" value={JSON.stringify(cart)} />
+          <button disabled={isSubmitting}>
+            {isSubmitting ? "Placing order" : "Order now"}
+          </button>
         </div>
       </Form>
     </div>
@@ -85,7 +91,21 @@ export async function action({ request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
 
-  return null;
+  const order = {
+    ...data,
+    cart: JSON.parse(data.cart),
+    priority: data.priority === "on",
+  };
+
+  const newOrder = await createOrder(order);
+
+  const errors = {};
+  console.log(errors);
+  if (!isValidPhone(order.phone))
+    errors.phone =
+      "Please give us your correct phone number. We might need it to contact you.";
+
+  return redirect(`/order/${newOrder.id}`);
 }
 
 export default CreateOrder;
