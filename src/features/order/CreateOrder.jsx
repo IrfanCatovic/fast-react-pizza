@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
-import { Form, redirect, useNavigate, useNavigation } from "react-router-dom";
+import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import { createOrder } from "../../services/apiRestaurant";
 
 // https://uibakery.io/regex-library/phone-number
@@ -39,6 +39,10 @@ function CreateOrder() {
   // const [withPriority, setWithPriority] = useState(false);
   const cart = fakeCart;
   const isSubmitting = navigation.state === "submitting";
+  1;
+
+  //koristi se najvise za prikazivanje errora
+  const formErrors = useActionData();
 
   return (
     <div>
@@ -56,6 +60,7 @@ function CreateOrder() {
           <div>
             <input type="tel" name="phone" required />
           </div>
+          {formErrors?.phone && <p>{formErrors.phone}</p>}
         </div>
 
         <div>
@@ -97,13 +102,17 @@ export async function action({ request }) {
     priority: data.priority === "on",
   };
 
-  const newOrder = await createOrder(order);
-
   const errors = {};
-  console.log(errors);
+
   if (!isValidPhone(order.phone))
     errors.phone =
       "Please give us your correct phone number. We might need it to contact you.";
+
+  if (Object.keys(errors).length > 0) return errors;
+  //kriran objekat za greske i ako je njegov sadrzaj veci od 0 samo nas vraca
+  //ne dozvoljava nam da pravimo novu porudzbinu
+
+  const newOrder = await createOrder(order);
 
   return redirect(`/order/${newOrder.id}`);
 }
