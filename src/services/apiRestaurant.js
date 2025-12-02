@@ -1,5 +1,5 @@
 const API_URL = 'https://react-fast-pizza-api.onrender.com/api';
-
+//ovaj api url je za nasu backend aplikaciju koju smo napravili u expressu i koja je deployovana na render.com
 export async function getMenu() {
   const res = await fetch(`${API_URL}/menu`);
 
@@ -43,7 +43,7 @@ export async function updateOrder(id, updateObj) {
       body: JSON.stringify(updateObj),
       headers: {
         'Content-Type': 'application/json',
-      },
+      },z
     });
 
     if (!res.ok) throw Error();

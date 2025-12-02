@@ -15,7 +15,7 @@ import AppLayout from './ui/AppLayout';
 
 const router = createBrowserRouter([
   {
-        //AppLayout pravimo kao parent element otalim rutama jer zelimo da se na svakoj stranici prikazuje AppLayout
+    //AppLayout pravimo kao parent element otalim rutama jer zelimo da se na svakoj stranici prikazuje AppLayout
     //To znaci da na svakoj ima header, Content i cartOverview, a izmedju njih ubacujemo sta zelimo da se vidi jos
     element: <AppLayout />,
     errorElement: <Error />,
