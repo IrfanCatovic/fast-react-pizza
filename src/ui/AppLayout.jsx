@@ -5,6 +5,7 @@ import Loader from "./Loader";
 
 function AppLayout() {
   const navigation = useNavigation();
+  //applayout uz pomoc useNavigation ima mogucnost da vidi da li se neka ruta ucitava jer je parent nad svim rutama
 
   const isLoading = navigation.state === "loading";
 
