@@ -49,10 +49,19 @@ function CreateOrder() {
       <h2>Ready to order? Let's go!</h2>
 
       {/* <Form method="POST" action="/order/new"> */}
-      <Form method="POST">
+      <Form method="POST"> 
+        {/*kliknem dugme, dodjem na rutu /order/new i forma salje post zahtev toj ruti
+      u app.jsx action: createOrderAction, koja je exportovana iz CreateOrder.jsx
+      znaci kad se forma submituje, poziva se createOrderAction funkcija
+      */}
+        {/* U api stizu podaci iz forme u obliku formData objekta, koji se u action funkciji parsira u normalan objekat
+      pomocu Object.fromEntries metode */}
         <div>
           <label>First Name</label>
           <input type="text" name="customer" required />
+          {/* ne moramo da pravimo posebne state varijable za svako polje u formi
+        jer react router DOM ima svoj nacin da procesuira formu putem action funkcije
+        koja se poziva na submit forme. */}
         </div>
 
         <div>
@@ -97,17 +106,18 @@ function CreateOrder() {
 }
 
 export async function action({ request }) {
+  //u ovoj akciji cemo da obradimo podatke iz forme
+  //saljemo ih na server i pravimo novu porudzbinu, pa nas na kraju redirektuje na stranicu te porudzbine
+  //na serveru cemo da validiramo podatke iz forme i vratimo eventualne greske nazad u komponentu
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
 
-  console.log(data);
   const order = {
     ...data,
     cart: JSON.parse(data.cart),
     priority: data.priority === "on",
   };
 
-  console.log(order);
   const errors = {};
 
   if (!isValidPhone(order.phone))

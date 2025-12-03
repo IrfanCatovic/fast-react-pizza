@@ -29,7 +29,8 @@ export async function createOrder(newOrder) {
     });
 
     if (!res.ok) throw Error();
-    const { data } = await res.json();
+    const { data } = await res.json();//data je u obliku nove porudzine, koju nam server vraca nakon kreiranja
+    // i tu sad mozemo da koristimo kao npr data.id za redirekciju na stranicu te porudzbine
     return data;
   } catch {
     throw Error('Failed creating your order');
