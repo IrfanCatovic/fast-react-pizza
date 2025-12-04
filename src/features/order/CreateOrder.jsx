@@ -38,10 +38,12 @@ function CreateOrder() {
   const navigation = useNavigation();
   // const [withPriority, setWithPriority] = useState(false);
   const cart = fakeCart;
-  const isSubmitting = navigation.state === "submitting";
+  const isSubmitting = navigation.state === "submitting";//submitting je vreme kada se forma salje na server
+  //postoje 3 stanja: iddle, submitting i loading
   1;
 
   //koristi se najvise za prikazivanje errora
+  //vraca podatke koje action funkcija vrati nakon submit forme
   const formErrors = useActionData();
 
   return (
