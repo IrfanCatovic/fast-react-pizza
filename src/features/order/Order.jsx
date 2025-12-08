@@ -22,6 +22,7 @@ function Order() {
     cart,
   } = order;
   const deliveryIn = calcMinutesLeft(estimatedDelivery);
+  //deliveryIn is positive if the order is still on the way, negative if it should have arrived already
 
   return (
     <div>
