@@ -10,7 +10,9 @@ function AppLayout() {
   const isLoading = navigation.state === "loading";
 
   return (
-    <div className="grid h-screen  grid-rows-[auto_1fr_auto] ">
+    <div className="grid h-screen  grid-rows-[auto_1fr_auto]  "> 
+    {/*auto_1fr_auto znaci imamo 3 grid reda i dajemo im velicine prva je auto, drugo 1fr, treca auto */}
+      
       
       <Header />
       {isLoading && <Loader />}
