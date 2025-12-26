@@ -20,6 +20,9 @@ function AppLayout() {
     <div className="overflow-scroll">
       <main className=" max-w-3xl mx-auto">
         <Outlet />
+        {/*Outlet je komponenta koja prikazuje sadrzaj stranice u zavisnosti od trenutne rute, 
+        u praksi to znaci da ce se prikazati sadrzaj stranice koja je aktivna
+        to definisemo App.jsx a znaci da je parent  element: <AppLayout />, a children pages koje definisemo preko ruta*/}
       </main>
     </div>
 
