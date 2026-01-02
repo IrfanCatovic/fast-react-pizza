@@ -28,6 +28,7 @@ function CreateUser() {
                    focus:border-transparent
                    transition"
       />
+      {/*ovako detaljan code sredjen css*/ }
 
       {username !== '' && (
         <div className="mt-4">
