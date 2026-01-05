@@ -13,7 +13,6 @@ function Timer() {
 
   return (
     <div>
-      <p>Current time:</p>
       <strong>{time.toLocaleTimeString()}</strong>
     </div>
   );

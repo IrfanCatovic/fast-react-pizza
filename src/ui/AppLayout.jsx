@@ -4,6 +4,7 @@ import Header from "./Header";
 import Loader from "./Loader";
 import Timer from "./Timer";
 
+
 function AppLayout() {
   const navigation = useNavigation();
   //applayout uz pomoc useNavigation ima mogucnost da vidi da li se neka ruta ucitava jer je parent nad svim rutama
@@ -21,6 +22,7 @@ function AppLayout() {
 
     <div className="overflow-scroll">
       <main className=" max-w-3xl mx-auto">
+        <Timer />
         <Outlet />
         {/*Outlet je komponenta koja prikazuje sadrzaj stranice u zavisnosti od trenutne rute, 
         u praksi to znaci da ce se prikazati sadrzaj stranice koja je aktivna
