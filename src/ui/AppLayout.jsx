@@ -20,8 +20,8 @@ function AppLayout() {
       
       {isLoading && <Loader />}
 
-    <div className="overflow-scroll">
-      <main className=" max-w-3xl mx-auto">
+    <div className="overflow-scroll ">
+      <main className=" max-w-5xl mx-auto ">
         <Timer />
         <Outlet />
         {/*Outlet je komponenta koja prikazuje sadrzaj stranice u zavisnosti od trenutne rute, 
