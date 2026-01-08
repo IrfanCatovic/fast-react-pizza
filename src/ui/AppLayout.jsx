@@ -1,34 +1,23 @@
-import { Outlet, useNavigation } from "react-router-dom";
-import CartOverview from "../features/cart/CartOverview";
-import Header from "./Header";
-import Loader from "./Loader";
-import Timer from "./Timer";
-
+import Header from './Header';
+import Loader from './Loader';
+import CartOverview from '../features/cart/CartOverview';
+import { Outlet, useNavigation } from 'react-router-dom';
 
 function AppLayout() {
   const navigation = useNavigation();
-  //applayout uz pomoc useNavigation ima mogucnost da vidi da li se neka ruta ucitava jer je parent nad svim rutama
-
-  const isLoading = navigation.state === "loading";
+  const isLoading = navigation.state === 'loading';
 
   return (
-    <div className="grid h-screen  grid-rows-[auto_1fr_auto]  "> 
-    {/*auto_1fr_auto znaci imamo 3 grid reda i dajemo im velicine prva je auto, drugo 1fr, treca auto */}
-      
-      
-      <Header />
-      
+    <div className="grid h-screen grid-rows-[auto_1fr_auto]">
       {isLoading && <Loader />}
 
-    <div className="overflow-scroll ">
-      <main className=" max-w-5xl mx-auto ">
-        <Timer />
-        <Outlet />
-        {/*Outlet je komponenta koja prikazuje sadrzaj stranice u zavisnosti od trenutne rute, 
-        u praksi to znaci da ce se prikazati sadrzaj stranice koja je aktivna
-        to definisemo App.jsx a znaci da je parent  element: <AppLayout />, a children pages koje definisemo preko ruta*/}
-      </main>
-    </div>
+      <Header />
+
+      <div className="overflow-scroll">
+        <main className="mx-auto max-w-3xl">
+          <Outlet />
+        </main>
+      </div>
 
       <CartOverview />
     </div>

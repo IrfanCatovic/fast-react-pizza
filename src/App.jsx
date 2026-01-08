@@ -1,4 +1,3 @@
-
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import Home from './ui/Home';
@@ -15,8 +14,6 @@ import AppLayout from './ui/AppLayout';
 
 const router = createBrowserRouter([
   {
-    //AppLayout pravimo kao parent element otalim rutama jer zelimo da se na svakoj stranici prikazuje AppLayout
-    //To znaci da na svakoj ima header, Content i cartOverview, a izmedju njih ubacujemo sta zelimo da se vidi jos
     element: <AppLayout />,
     errorElement: <Error />,
 
@@ -46,12 +43,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-
-    // { path: "/", element: <Home /> },
-  // { path: "/menu", element: <Menu /> },
-  // { path: "/cart", element: <Cart /> },
-  // { path: "/order/new", element: <CreateOrder /> },
-  // { path: "/order/:orderId", element: <Order /> },
 ]);
 
 function App() {

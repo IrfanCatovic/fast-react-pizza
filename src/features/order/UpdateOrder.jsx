@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import { useFetcher } from 'react-router-dom';
 import Button from '../../ui/Button';
 import { updateOrder } from '../../services/apiRestaurant';
