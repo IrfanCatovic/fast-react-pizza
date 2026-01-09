@@ -159,6 +159,7 @@ export async function action({ request }) {
   if (Object.keys(errors).length > 0) return errors;
 
   // If everything is okay, create new order and redirect
+  //ovo await createorder ce da vrati novokreiranu narudzbinu sa id-jem, a nalazi se u  apiRestaurant.js
   const newOrder = await createOrder(order);
 
   // Do NOT overuse

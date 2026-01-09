@@ -19,9 +19,4 @@ function LinkButton({ children, to }) {
   );
 }
 
-LinkButton.propTypes = {
-  children: PropTypes.node.isRequired,
-  to: PropTypes.string.isRequired,
-};
-
 export default LinkButton;

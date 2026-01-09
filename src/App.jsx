@@ -26,6 +26,8 @@ const router = createBrowserRouter([
         path: '/menu',
         element: <Menu />,
         loader: menuLoader,
+        //podaci se ucitavaju pre nego sto se prikaze komponenta Menu
+        //ono vuce podatke iz apiRestaurant.js - getMenu
         errorElement: <Error />,
       },
       { path: '/cart', element: <Cart /> },
@@ -38,8 +40,11 @@ const router = createBrowserRouter([
         path: '/order/:orderId',
         element: <Order />,
         loader: orderLoader,
-        errorElement: <Error />,
         action: updateOrderAction,
+        errorElement: <Error />,
+        //action updateAction - koristimo isti za azuriranje narudzbine
+        //primamo ga iz createOrder.jsx - export async function action({ request }) 
+        //a saljemo ga ovde kao property i vracamo ga u Order.jsx
       },
     ],
   },
