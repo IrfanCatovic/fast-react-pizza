@@ -43,7 +43,7 @@ const userSlice = createSlice({
       state.username = action.payload;
     },
   },
-  extraReducers: (builder) =>
+  extraReducehns: (builder) =>
     builder
       .addCase(fetchAddress.pending, (state) => {
         state.status = 'loading';

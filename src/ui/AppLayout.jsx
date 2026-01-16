@@ -6,6 +6,7 @@ import { Outlet, useNavigation } from 'react-router-dom';
 function AppLayout() {
   const navigation = useNavigation();
   const isLoading = navigation.state === 'loading';
+  //ovo znaci isLoading je true ako se ucitava neka ova ruta 
 
   return (
     <div className="grid h-screen grid-rows-[auto_1fr_auto]">
