@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/order/:orderId',
-        element: <Order />,[p0omm0]
+        element: <Order />,
         loader: orderLoader,
         action: updateOrderAction,
         errorElement: <Error />,
