@@ -43,7 +43,7 @@ const userSlice = createSlice({
       state.username = action.payload;
     },
   },
-  extraReducehns: (builder) =>
+  extraReducers: (builder) =>
     builder
       .addCase(fetchAddress.pending, (state) => {
         state.status = 'loading';
@@ -56,7 +56,7 @@ const userSlice = createSlice({
       .addCase(fetchAddress.rejected, (state) => {
         state.status = 'error';
         state.error =
-          'There was a problem getting your address. Make sure to fill this field!';
+          action.error.message || `Failed to fetch user's adress.`
       }),
 });
 

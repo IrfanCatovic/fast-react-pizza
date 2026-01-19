@@ -167,7 +167,7 @@ export async function action({ request }) {
   //ovo je trik kako bi se cart ocistio pre nego sto se redirectuje na stranicu narudzbine
   //jer inace bi se desilo da se cart ocisti tek kada se komponenta order mountuje
   //sto znaci da bi korisnik na trenutak video staru vrednost cart-a
-  await Promise.resolve();
+  await Promise.resolve(); 
 
   return redirect(`/order/${newOrder.id}`);
 }
